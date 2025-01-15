@@ -9,23 +9,23 @@ import SwiftUI
 import CoreNFC
 
 struct ContentView: View {
-    @State private var NFCR = NFCReader()
+    @State private var penReader = NFCPenReader()
     @State public var showingAlert = false
     
-    func readNfc() {
-        NFCR.read()
+    func startNFCSession() {
+        penReader.startSession()
     }
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button(action: readNfc) {
+                Button(action: startNFCSession) {
                     Image(systemName: "wave.3.right")
                 }
             }
             TabView {
-                Text("NFC data: \(NFCR.raw)")
+                Text("NFC data: \(penReader.raw)")
                     .tabItem {
                         Image(systemName: "syringe")
                         Text("Log")

@@ -2,7 +2,7 @@
 //  NFCReader.swift
 //  Neonov
 //
-//  Created by Damiano on 31/10/24.
+//  Created by Damiano on 24/11/24.
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import CoreNFC
 
 @Observable
 public class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
-    public var startAlert = "Hold your pen near the tag."
+    public var startAlert = "Hold your pen near the top of the phone."
     public var raw = "Raw Data will be available after scan."
     
     // Reference the NFC session
@@ -56,10 +56,10 @@ public class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
                 print(dataString ?? "no dataString")
                 let hexString = data.map { String(format: "%02x", $0) }.joined()
                 let hexString2 = data.map { String(format: "%02hhx", $0) }.joined()
-                print(hexString)
-                print(hexString2)
+                print("hexString: \(hexString)");
+                print("hexString2: \(hexString2)");
                 let base64String = data.base64EncodedString()
-                print(base64String)
+                print("base64String: \(base64String)");
                 
                 // read data from novopen echo plus
                 let dataMessage = String(data: record.payload, encoding:.utf8)
@@ -94,20 +94,20 @@ public class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
 }
 
 //extension NFCTableViewController {
-//    
+//
 //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        let numberOfMessages = self.nfcMessages[section].count
 //        let headerTitle = numberOfMessages == 1 ? "One Message" : "\(numberOfMessages) Messages"
-//        
+//
 //        return headerTitle
 //    }
-//    
+//
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "NFCTableCell", for: indexPath) as! NFCTableViewCell
 //        let nfcTag = self.nfcMessages[indexPath.section][indexPath.row]
-//        
+//
 //        cell.textLabel?.text = "\(nfcTag.records.count) Records"
-//        
+//
 //        return cell
 //    }
 //}
