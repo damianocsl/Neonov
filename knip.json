@@ -1,0 +1,27 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": [
+    "App.tsx",
+    "src/navigation/AppNavigator.tsx"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx,js,jsx}",
+  ],
+  "ignore": [
+    "node_modules/**",
+    ".expo/**",
+    "ios/**",
+    "android/**",
+    "web-build/**",
+    "dist/**",
+    "*.log",
+    ".DS_Store"
+  ],
+  "compilers": {
+    "typescript": true
+  },
+  "ignoreDependencies": [
+    "expo-updates",
+    "expo-system-ui"
+  ]
+} 
